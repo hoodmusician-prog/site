@@ -1,0 +1,12 @@
+html
+@{
+    ViewData["Title"] = Model.Title;
+}
+@model AnimeTitle
+
+<div class="container anime-detail">
+    <div class="detail-header">
+        <div class="poster-wrapper">
+            @if (!string.IsNullOrEmpty(Model.PosterUrl))
+            {
+                <img src="@Model.PosterUrl" alt="@Model.Title"
