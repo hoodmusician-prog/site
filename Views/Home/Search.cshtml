@@ -1,0 +1,40 @@
+html
+@{
+    ViewData["Title"] = "Результаты поиска";
+}
+@model List<AnimeTitle>
+
+<div class="container">
+    <h1>Результаты поиска: "@ViewBag.Query"</h1>
+    
+    @if (Model.Any())
+    {
+        <div class="anime-grid">
+            @foreach (var anime in Model)
+            {
+                <div class="anime-card">
+                    <div class="card-image">
+                        @if (!string.IsNullOrEmpty(anime.PosterUrl))
+                        {
+                            <img src="@anime.PosterUrl" alt="@anime.Title" />
+                        }
+                        else
+                        {
+                            <div class="placeholder">🎬</div>
+                        }
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="/Anime/Details/@anime.Id">@anime.Title</a></h3>
+                        <span class="genre">@anime.Genre</span>
+                        <div class="rating">⭐ @anime.Rating.ToString("F1")/10</div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p>😢 По вашему запросу ничего не найдено</p>
+        <a href="/" class="btn">Вернуться на главную</a>
+    }
+</div>
