@@ -1,0 +1,89 @@
+html
+@{
+    ViewData["Title"] = "Главная";
+}
+@model HomeViewModel
+
+<div class="hero">
+    <div class="container">
+        <h1>🌸 Аниме весеннего сезона 2026</h1>
+        <p>Самые ожидаемые новинки и горячие релизы этой весны</p>
+        <div class="hero-stats">
+            <span>🎬 @Model.TotalAnime аниме</span>
+            <span>👤 @Model.TotalCharacters персонажей</span>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert success">@TempData["Success"]</div>
+    }
+
+    <section class="section">
+        <h2>🔥 Топ-рейтинг</h2>
+        <div class="anime-grid">
+            @foreach (var anime in Model.TopRated)
+            {
+                <div class="anime-card">
+                    <div class="card-image">
+                        @if (!string.IsNullOrEmpty(anime.PosterUrl))
+                        {
+                            <img src="@anime.PosterUrl" alt="@anime.Title" />
+                        }
+                        else
+                        {
+                            <div class="placeholder">🎬</div>
+                        }
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="/Anime/Details/@anime.Id">@anime.Title</a></h3>
+                        <span class="genre">@anime.Genre</span>
+                        <div class="rating">⭐ @anime.Rating.ToString("F1")/10</div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>📅 Новинки сезона</h2>
+        <div class="anime-grid">
+            @foreach (var anime in Model.LatestAnime)
+            {
+                <div class="anime-card">
+                    <div class="card-image">
+                        @if (!string.IsNullOrEmpty(anime.PosterUrl))
+                        {
+                            <img src="@anime.PosterUrl" alt="@anime.Title" />
+                        }
+                        else
+                        {
+                            <div class="placeholder">🎬</div>
+                        }
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="/Anime/Details/@anime.Id">@anime.Title</a></h3>
+                        <span class="genre">@anime.Genre</span>
+                        <div class="release-date">📅 @anime.ReleaseDate.ToString("dd.MM.yyyy")</div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>⏳ Скоро выходят</h2>
+        <ul class="upcoming-list">
+            @foreach (var anime in Model.Upcoming)
+            {
+                <li>
+                    <strong><a href="/Anime/Details/@anime.Id">@anime.Title</a></strong>
+                    — @anime.ReleaseDate.ToString("dd.MM.yyyy")
+                    <span class="genre-tag">@anime.Genre</span>
+                </li>
+            }
+        </ul>
+    </section>
+</div>
