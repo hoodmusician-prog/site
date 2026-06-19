@@ -1,0 +1,42 @@
+html
+@{
+    ViewData["Title"] = "О проекте";
+}
+@model AboutViewModel
+
+<div class="container about-page">
+    <h1>🌸 О проекте "Аниме Весна 2026"</h1>
+    
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-number">@Model.TotalAnime</div>
+            <div class="stat-label">Аниме-тайтлов</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">@Model.TotalCharacters</div>
+            <div class="stat-label">Персонажей</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">@Model.TotalReviews</div>
+            <div class="stat-label">Отзывов</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">@Model.TotalUsers</div>
+            <div class="stat-label">Пользователей</div>
+        </div>
+    </div>
+
+    <div class="about-text">
+        <h2>О сайте</h2>
+        <p>Этот сайт создан для всех поклонников аниме. Здесь вы найдёте информацию о самых ожидаемых новинках весеннего сезона 2026 года.</p>
+        <p>Мы собираем данные о новых аниме, персонажах и делимся рецензиями от фанатов.</p>
+        
+        <h2>Технологии</h2>
+        <ul>
+            <li>🔷 ASP.NET Core MVC</li>
+            <li>📊 Entity Framework Core</li>
+            <li>🎨 HTML5, CSS3</li>
+            <li>📱 Адаптивный дизайн</li>
+        </ul>
+    </div>
+</div>
