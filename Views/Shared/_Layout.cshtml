@@ -1,0 +1,46 @@
+html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Аниме Весна 2026</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="/" class="logo">🌸 Anime Spring 2026</a>
+                <ul class="nav-links">
+                    <li><a href="/">Главная</a></li>
+                    <li><a href="/Anime">Все аниме</a></li>
+                    <li><a href="/Anime/TopRated">Топ-10</a></li>
+                    <li><a href="/Home/About">О проекте</a></li>
+                    <li><a href="/Account/Users">Пользователи</a></li>
+                </ul>
+                <div class="search-bar">
+                    <form action="/Home/Search" method="get">
+                        <input type="text" name="query" placeholder="Поиск аниме..." />
+                        <button type="submit">🔍</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Anime Spring Season. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
